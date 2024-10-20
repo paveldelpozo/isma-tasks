@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+   @apply font-sans text-gray-800;
+
+    #app {
+        @apply flex flex-col items-center justify-start w-full;
+
+        .content {
+            @apply max-w-screen-lg flex flex-col items-center justify-start gap-4 w-full;
+
+            header.title {
+                @apply flex flex-row items-center justify-between gap-4 w-full p-4 bg-purple-100 rounded-b-xl shadow-lg;
+
+                .summary {
+                    @apply flex flex-col items-start justify-start gap-2 w-full;
+
+                    h1 {
+                        @apply font-bold text-4xl text-purple-500 leading-tight;
+                    }
+
+                    p {
+                        @apply leading-tight text-gray-500 text-sm;
+                    }
+
+                    .progress {
+                        @apply flex items-center justify-start w-full max-w-screen-md h-4 bg-purple-300 border-2 border-purple-500 rounded-full;
+                        .progress-bar {
+                            @apply w-full h-full rounded-full bg-purple-500;
+                        }
+                    }
+                }
+                img.avatar {
+                    @apply w-32 aspect-square rounded-full border-2 border-purple-500 shadow-lg;
+                }
+            }
+
+            section.add-task {
+                @apply w-full px-4;
+
+                form {
+                    @apply w-full;
+                }
+            }
+
+            .field-container {
+                @apply relative w-full;
+
+                .icon {
+                    @apply absolute inset-y-0 start-0 flex items-center ps-2 pointer-events-none;
+
+                    svg {
+                        @apply w-8 h-8 fill-purple-500;
+                    }
+                }
+
+                input {
+                    @apply block w-full p-4 ps-12 text-lg text-gray-900 border border-gray-300 rounded-xl focus:outline-0 focus:ring-2 focus:ring-purple-500 focus:border-purple-500
+                }
+
+                button[type="submit"] {
+                    @apply text-white absolute end-2.5 bottom-3.5 bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2;
+                }
+            }
+
+            section.tasks {
+                @apply w-full px-4 flex flex-col gap-2;
+
+                main {
+                    @apply flex flex-col items-center justify-start border border-gray-300 rounded-2xl shadow-lg;
+
+                    h3 {
+                        @apply w-full flex flex-row items-center justify-between font-bold text-2xl text-purple-500 leading-tight p-2 border-b border-gray-300;
+
+                        .filter {
+                            @apply flex flex-row gap-1 bg-purple-200 rounded-xl p-1;
+
+                            button {
+                                @apply bg-purple-200 hover:bg-purple-300 focus:ring-2 focus:ring-purple-300 px-2 py-1;
+                            }
+                            button.selected {
+                                @apply bg-purple-500 hover:bg-purple-400;
+                            }
+                        }
+
+                        button {
+                            @apply text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2;
+                        }
+                    }
+
+                    .search-task {
+                        @apply w-full px-4 my-4;
+                    }
+
+                    .tasks-list {
+                        @apply w-full divide-y;
+                    }
+
+                    article {
+                        @apply relative flex flex-row items-center justify-start gap-2 w-full;
+
+                        button.mark-as-done,
+                        button.remove {
+                            @apply flex-none w-10 h-10 flex items-center justify-center rounded m-1;
+
+                            svg {
+                                @apply w-8 h-8 fill-white;
+                            }
+                        }
+
+                        button.mark-as-done {
+                            @apply bg-amber-500 hover:bg-amber-400 focus:outline-0 focus:ring-2 focus:ring-amber-300;
+                        }
+                        button.mark-as-done.completed {
+                            @apply bg-green-500 hover:bg-green-400 focus:ring-green-500;
+                        }
+
+                        button.remove {
+                            @apply bg-red-500 hover:bg-red-400 focus:outline-0 focus:ring-2 focus:ring-red-300;
+                        }
+
+                        .description {
+                            @apply flex flex-row items-center justify-start h-full relative grow text-lg;
+
+                            .date {
+                                @apply absolute -top-1 right-0 text-xs text-gray-500 leading-tight;
+                            }
+                        }
+                    }
+
+                    article.task.even {
+                        @apply bg-purple-50;
+                    }
+
+                    article.task.completed .description {
+                        @apply text-gray-400 line-through;
+                    }
+
+                    article.no-tasks,
+                    article.no-search {
+                        @apply flex-col justify-center text-xl p-4 text-purple-500 font-bold;
+
+                        svg {
+                            @apply w-16 h-16 fill-purple-300;
+                        }
+                    }
+                }
+
+                footer {
+                    @apply h-16 flex flex-row items-center justify-between gap-2 bg-purple-500 text-white w-full rounded-b-2xl px-2;
+
+                    .paginator {
+                        @apply divide-purple-500 flex flex-row items-center justify-center gap-1;
+
+                        button {
+                            @apply w-10 h-10 flex items-center justify-center bg-white rounded-xl disabled:bg-white/25 hover:bg-purple-100 focus:outline-0 focus:ring-2 focus:ring-purple-300;
+
+                            svg {
+                                @apply w-8 h-8 fill-purple-500;
+                            }
+                        }
+                    }
+                }
+            }
+
+            section.about {
+                @apply flex flex-col items-center justify-start gap-4 py-16;
+
+                h1 {
+                    @apply text-3xl leading-tight text-purple-400;
+                }
+
+                h3 {
+                    @apply text-2xl leading-tight text-purple-400;
+                }
+
+                img.logo {
+                    @apply h-24 ml-16;
+                }
+
+                p {
+                    @apply text-gray-500 leading-tight my-4;
+                }
+
+                .logos {
+                    @apply flex flex-row items-center justify-center gap-8;
+
+                    a {
+                        @apply w-16 h-16 text-gray-400 hover:text-purple-500 leading-tight text-center hover:drop-shadow-lg;
+
+                        img {
+                            @apply w-16 h-16;
+                        }
+                    }
+                }
+            }
+        }
+
+        footer  {
+            @apply w-full px-4 flex flex-row items-center justify-center gap-2 text-purple-500;
+            a {
+                @apply font-bold
+            }
+            svg.copyleft {
+                @apply w-6 h-6 fill-purple-500;
+            }
+        }
+    }
+
+}

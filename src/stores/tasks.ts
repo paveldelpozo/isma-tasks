@@ -5,7 +5,7 @@ export const useTasksStore = defineStore('tasksStore', () => {
     const baseUrl = 'http://api_tasks_crud.test/api'
     const error = ref<any>(null)
     const loading  = ref(false)
-    const tasks = ref([])
+    const tasks = ref<any[]>([])
     const totalTasks = ref(0)
     const doneTasks = ref(0)
     const from = ref(0)

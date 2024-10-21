@@ -6,14 +6,14 @@ import { storeToRefs } from 'pinia'
 const taskStore = useTasksStore()
 const {
     loading,
-    error,
+    //error,
     tasks,
     filter,
     search,
     totalTasks,
     page,
-    size,
-    sort,
+    //size,
+    //sort,
     from,
     to,
     firstPage,
@@ -33,12 +33,12 @@ const onAddTask = async () => {
     newTask.value = ''
 }
 
-const onUpdateTask = async task => {
+const onUpdateTask = async (task: any) => {
     await updateTask(task.id, task.description, !task.completed)
     refresh()
 }
 
-const onDeleteTask = async id => {
+const onDeleteTask = async (id: number) => {
     if (confirmDeletion.value === 0) {
         confirmDeletion.value = id
     } else {
@@ -106,14 +106,14 @@ onMounted(async () => {
                         Todas
                     </button>
                     <button
-                        :class="{ selected: filter === 'completed' }"
-                        @click="filter = 'completed'"
+                        :class="{ selected: filter === 'pending' }"
+                        @click="filter = 'pending'"
                     >
                         Pendientes
                     </button>
                     <button
-                        :class="{ selected: filter === 'pending' }"
-                        @click="filter = 'pending'"
+                        :class="{ selected: filter === 'completed' }"
+                        @click="filter = 'completed'"
                     >
                         Completadas
                     </button>
